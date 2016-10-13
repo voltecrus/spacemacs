@@ -14,7 +14,6 @@
     company
     company-emoji
     emoji-cheat-sheet-plus
-    (evil-org :location local)
     evil-surround
     gnuplot
     htmlize
@@ -45,18 +44,6 @@
 
 (defun org/post-init-emoji-cheat-sheet-plus ()
   (add-hook 'org-mode-hook 'spacemacs/delay-emoji-cheat-sheet-hook))
-
-(defun org/init-evil-org ()
-  (use-package evil-org
-    :commands (evil-org-mode evil-org-recompute-clocks)
-    :init (add-hook 'org-mode-hook 'evil-org-mode)
-    :config
-    (progn
-      (evil-define-key 'normal evil-org-mode-map
-        "O" 'evil-open-above)
-      (spacemacs/set-leader-keys-for-major-mode 'org-mode
-        "C" 'evil-org-recompute-clocks)
-      (spacemacs|diminish evil-org-mode " ⓔ" " e"))))
 
 (defun org/post-init-evil-surround ()
   (defun spacemacs/add-org-surrounds ()
