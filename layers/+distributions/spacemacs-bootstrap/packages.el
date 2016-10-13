@@ -163,20 +163,22 @@
   (spacemacs|define-transient-state paste
     :title "Pasting Transient State"
     :doc "\n[%s(length kill-ring-yank-pointer)/%s(length kill-ring)] \
- [_C-j_/_C-k_] cycles through yanked text, [_p_/_P_] pastes the same text \
+ [_C-c_/_C-t_] cycles through yanked text, [_j_/_J_] pastes the same text \
  above or below. Anything else exits."
     :bindings
-    ("C-j" evil-paste-pop)
-    ("C-k" evil-paste-pop-next)
-    ("p" evil-paste-after)
-    ("P" evil-paste-before)
+    ("C-c" evil-paste-pop)
+    ("C-t" evil-paste-pop-next)
+    ("j" evil-paste-after)
+    ("J" evil-paste-before)
     ("0" spacemacs//transient-state-0))
 
   (when dotspacemacs-enable-paste-transient-state
+    (define-key evil-visual-state-map
+      "j" 'spacemacs/paste-transient-state/evil-paste-after)
     (define-key evil-normal-state-map
-      "p" 'spacemacs/paste-transient-state/evil-paste-after)
+      "j" 'spacemacs/paste-transient-state/evil-paste-after)
     (define-key evil-normal-state-map
-      "P" 'spacemacs/paste-transient-state/evil-paste-before))
+      "J" 'spacemacs/paste-transient-state/evil-paste-before))
   ;; fold transient state
   (when (eq 'evil dotspacemacs-folding-method)
     (spacemacs|define-transient-state fold
