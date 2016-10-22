@@ -114,13 +114,6 @@
         (kbd "C-k") 'eshell-previous-matching-input-from-input
         (kbd "C-j") 'eshell-next-matching-input-from-input))))
 
-(defun shell/init-eshell-prompt-extras ()
-  (use-package eshell-prompt-extras
-    :commands epe-theme-lambda
-    :init
-    (setq eshell-highlight-prompt nil
-          eshell-prompt-function 'epe-theme-lambda)))
-
 (defun shell/init-eshell-z ()
   (use-package eshell-z
     :defer t
